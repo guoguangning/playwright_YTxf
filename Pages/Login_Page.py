@@ -1,7 +1,6 @@
-import time
+
 
 from playwright.sync_api import sync_playwright
-
 from BasePage.BasePage import BasePage
 from BasePage.logger import Logger
 
@@ -47,24 +46,24 @@ class LoginPage(BasePage):
             raise
 
 
-with sync_playwright() as p:
-    __username = '13723945525'
-    __password = 'Th#VHv1P6T3s53Ug'
-    __assert = '//*[@id="app"]/div[1]/div[1]/img'
-    browser = p.chromium.launch(headless=False, args=['--start-maximized'])
-    context = browser.new_context()
-    page = browser.new_page(no_viewport=True)
-    login_page = LoginPage(page)
-    login_page.goto_login()
-    login_page.fill_username(__username)
-    login_page.fill_password(__password)
-    login_page.click_login_button()
-    page.wait_for_timeout(2000)
-    try:
-        assert page.is_visible(__assert)
-        logger.info("Element is visible")
-    except Exception as e:
-        logger.error(f"Element is not visible: {e}")
-        raise
-    context.close()
-    browser.close()
+# with sync_playwright() as p:
+#     __username = '13723945525'
+#     __password = 'Th#VHv1P6T3s53Ug'
+#     __assert = '//*[@id="app"]/div[1]/div[1]/img'
+#     browser = p.chromium.launch(headless=False, args=['--start-maximized'])
+#     context = browser.new_context()
+#     page = browser.new_page(no_viewport=True)
+#     login_page = LoginPage(page)
+#     login_page.goto_login()
+#     login_page.fill_username(__username)
+#     login_page.fill_password(__password)
+#     login_page.click_login_button()
+#     page.wait_for_timeout(2000)
+#     try:
+#         assert page.is_visible(__assert)
+#         logger.info("Element is visible")
+#     except Exception as e:
+#         logger.error(f"Element is not visible: {e}")
+#         raise
+#     context.close()
+#     browser.close()

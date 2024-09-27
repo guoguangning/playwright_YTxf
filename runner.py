@@ -3,7 +3,7 @@ from pathlib import Path
 import time
 from BasePage.logger import Logger
 
-logger = Logger("pytest_run").get_log()
+logger = Logger("runner").get_log()
 
 
 def run_pytest(allure_results_dir: Path):

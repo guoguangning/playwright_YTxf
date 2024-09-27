@@ -1,3 +1,5 @@
+import re
+from datetime import datetime
 from typing import Optional, Union, List
 from playwright.sync_api import expect, Page, Locator
 from BasePage.logger import Logger
@@ -20,6 +22,7 @@ class BasePage:
             logger.info(f"Navigated to URL: {full_url}")
         except Exception as e:
             logger.error(f"Cannot navigate to page: {e}")
+            raise
 
     def _click(self, locator: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -29,10 +32,12 @@ class BasePage:
         :return:
         """
         try:
+            self._ele_to_be_visible_force(locator, frame_locator)
             target = self._get_target_locator(locator, frame_locator)
             target.click()
         except Exception as e:
             logger.error(f"点击失败: {e}")
+            raise
 
     def _hover(self, locator: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -46,6 +51,7 @@ class BasePage:
             target.hover()
         except Exception as e:
             logger.error(f"悬停失败: {e}")
+            raise
 
     def _fill(self, locator: str, value: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -60,6 +66,7 @@ class BasePage:
             target.fill(value)
         except Exception as e:
             logger.error(f"输入失败: {e}")
+            raise
 
     def _type(self, locator: str, value: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -74,6 +81,89 @@ class BasePage:
             target.type(text=value, delay=100)
         except Exception as e:
             logger.error(f"输入失败: {e}")
+            raise
+
+    def _fill_select(self, locator: str, *option_locators: str, input_value: Optional[str] = None,
+                     frame_locator: Optional[str] = None) -> None:
+        """
+        :param locator: 输入框或下拉框定位元素
+        :param option_locators: 需要选择的下拉选项元素
+        :param input_value: 当 locator 为输入框时填写的内容
+        :param frame_locator: 提供的 frame 框架
+        下拉选择，支持输入及多选
+        """
+        try:
+            target_element = self._get_target_locator(locator, frame_locator)
+            logger.info("输入框或下拉框定位元素成功")
+            target_element.click()
+
+            # 填充输入框
+            if input_value:
+                logger.info("准备输入内容")
+                target_element.fill(input_value)  # 填充输入内容
+                logger.info("输入成功")
+
+            self._ele_to_be_visible_force(option_locators[0], frame_locator)
+
+            # 遍历选择的选项 locators
+            for option_locator in option_locators:
+                option_element = self._get_target_locator(option_locator, frame_locator)
+                option_element.click()
+
+        except ValueError as ve:
+            logger.error(f"值错误: {ve}. 请检查传入的参数。")
+            raise
+        except Exception as e:
+            logger.error(f"下拉框选择失败: {str(e)}")
+            raise
+
+    def _select_date(self, date_placeholder: str, frame_locator: Optional[str] = None) -> None:
+        """
+        选择日期的封装函数
+        :param date_placeholder: 日期选择框的占位符文本
+        """
+        try:
+            target = self._get_target_locator(date_placeholder, frame_locator)
+            target.click()
+
+            # 获取当前日期
+            current_date = datetime.now()
+            date_to_select = str(current_date.day)
+
+            # 寻找并选择当前日期
+            date_element = self.page.get_by_text(date_to_select, exact=True)
+            if date_element.count() > 0:  # 确保找到元素
+                date_element.nth(1).click()
+            else:
+                logger.warning(f"未找到日期 {date_to_select}，请确认日期选择框是否正确显示.")
+
+        except Exception as e:
+            logger.error(f"选择时间失败: {e}")
+            raise
+
+    def _select_options(self, category_text: str, *options: str) -> None:
+        """根据给定的类别和选项进行选择
+
+        :param category_text: 下拉框类别文本，例如 "类别：新建装修建筑保温用途变更扩建其他"
+        :param options: 需要选择的选项，例如 "新建", "建筑保温"
+        """
+        try:
+            # 找到包含类别文本的 div 元素
+            category_locator = self.page.locator("div").filter(
+                has_text=re.compile(f"^{category_text}$")
+            )
+
+            # 点击下拉框
+            category_locator.get_by_placeholder("请选择").click()
+
+            # 点击所有选项
+            for option in options:
+                self.page.get_by_text(option).click()
+
+            logger.info("选项选择成功")
+        except Exception as e:
+            logger.error(f"选项选择失败: {e}")
+            raise  # 重新抛出异常以便外部捕获和处理
 
     def _file(self, locator: str, files: Union[str, List[str]], frame_locator: Optional[str] = None) -> None:
         """
@@ -93,21 +183,21 @@ class BasePage:
         """断言元素可见，并记录日志"""
         try:
             # 日志记录尝试断言的元素定位器
-            logger.info(f"Attempting to assert that the element with locator '{locator}' is visible.")
+            logger.info(f"尝试断言定位的元素 '{locator}' 可见.")
 
             # 断言元素可见
             is_visible = expect(self.page.locator(locator)).to_be_visible()
 
             # 日志记录断言结果
             if is_visible:
-                logger.info(f"Element with locator '{locator}' is visible.")
+                logger.info(f"定位的元素 '{locator}' 可见.")
             else:
-                logger.warning(f"Element with locator '{locator}' is not visible.")
+                logger.warning(f"定位的元素 '{locator}' 不可见.")
 
             return is_visible
         except Exception as e:
             # 日志记录异常情况
-            logger.error(f"An error occurred while asserting visibility of element with locator '{locator}': {e}")
+            logger.error(f"使用定位器声明元素的可见性时发生错误 '{locator}': {e}")
             return False
 
     def _ele_to_be_visible_force(self, locator: str, frame_locator: Optional[str] = None, timeout: int = 5) -> None:

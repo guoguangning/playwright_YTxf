@@ -1,22 +1,10 @@
-import pytest
-from playwright.sync_api import sync_playwright
+# TestLogin.py
 
-from BasePage.logger import Logger
+import pytest
 from Pages.Login_Page import LoginPage
+from BasePage.logger import Logger
 
 logger = Logger("TestLogin").get_log()
-
-
-@pytest.fixture(scope="function")
-def browser_context():
-    """启动 Playwright 浏览器上下文"""
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, args=['--start-maximized'])
-        context = browser.new_context(no_viewport=True)
-        page = context.new_page()
-        yield page
-        context.close()
-        browser.close()
 
 
 class TestLogin(object):
