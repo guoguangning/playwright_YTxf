@@ -1,8 +1,14 @@
+"""
+-*- coding: utf-8 -*-
+@File    : Utils_url.py
+@Date    : 2024/9/24 15:25
+@Author  : ggn
+"""
 import configparser
 from urllib.parse import urljoin
 from BasePage.logger import Logger
 
-logger = Logger("Utils").get_log()
+logger = Logger("Utils_url").get_log()
 
 
 class Utils:

@@ -1,0 +1,5 @@
+# TestLogin.yaml
+-
+ username: '13723945525'
+ password: 'Th#VHv1P6T3s53Ug'
+ expected: '//*[@id="app"]/div[1]/div[1]/img'

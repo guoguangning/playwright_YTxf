@@ -1,0 +1,5 @@
+# Login_Page.yaml
+__path: '/login'
+__username_selector: '//input[@placeholder="请输入账号"]'
+__password_selector: '//input[@placeholder="请输入密码"]'
+__login_button_selector: '//div[@class="loginBox"]/button'

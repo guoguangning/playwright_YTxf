@@ -1,9 +1,15 @@
+"""
+-*- coding: utf-8 -*-
+@File    : BasePage.py
+@Date    : 2024/9/24 15:25
+@Author  : ggn
+"""
 import re
 from datetime import datetime
 from typing import Optional, Union, List
 from playwright.sync_api import expect, Page, Locator
 from BasePage.logger import Logger
-from Utils.Utils import Utils
+from Utils.Utils_url import Utils
 
 logger = Logger("BasePage").get_log()
 
@@ -180,25 +186,22 @@ class BasePage:
             logger.error(f"文件上传失败: {e}")
 
     def _ele_to_be_visible(self, locator: str) -> bool:
-        """断言元素可见，并记录日志"""
+        """断言元素可见"""
         try:
             # 日志记录尝试断言的元素定位器
             logger.info(f"尝试断言定位的元素 '{locator}' 可见.")
 
             # 断言元素可见
-            is_visible = expect(self.page.locator(locator)).to_be_visible()
+            expect(self.page.locator(locator)).to_be_visible()
 
             # 日志记录断言结果
-            if is_visible:
-                logger.info(f"定位的元素 '{locator}' 可见.")
-            else:
-                logger.warning(f"定位的元素 '{locator}' 不可见.")
+            logger.info(f"定位的元素 '{locator}' 可见.")
+            return True  # 断言成功
 
-            return is_visible
         except Exception as e:
             # 日志记录异常情况
             logger.error(f"使用定位器声明元素的可见性时发生错误 '{locator}': {e}")
-            return False
+            return False  # 断言失败
 
     def _ele_to_be_visible_force(self, locator: str, frame_locator: Optional[str] = None, timeout: int = 5) -> None:
         """强制等待某个元素可见"""

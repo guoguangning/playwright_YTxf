@@ -1,0 +1,28 @@
+# TestAddProject.yaml
+-
+  project_name: '验收工程名称'
+  building_number: '建筑层数'
+  building_height: '建筑高度'
+  building_area: '建筑面积'
+  total_building_area: '110'  # 建筑总面积
+  fire_level: '耐火等级'
+  expected: '//tbody/tr/td[3]/div[text()="验收工程名称"]' # 断言元素
+  building_volume: '建筑体积'
+  description_of_usage: '使用性质说明'
+  building_construction: '建筑结构'
+  hazard_classification: '建筑/火灾危险性分类'
+  construction_unit: '滨州建设单位3210'
+
+-
+  project_name: '验收工程名称2'
+  building_number: '建筑层数'
+  building_height: '建筑高度'
+  building_area: '建筑面积'
+  total_building_area: '110'  # 建筑总面积
+  fire_level: '耐火等级'
+  expected: '//tbody/tr/td[3]/div[text()="验收工程名称2"]' # 断言元素
+  building_volume: ''
+  description_of_usage: ''
+  building_construction: ''
+  hazard_classification: ''
+  construction_unit: ''

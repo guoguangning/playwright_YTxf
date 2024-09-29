@@ -10,20 +10,25 @@ def print_hi(name, day=None):
     # 在下面的代码行中使用断点来调试脚本。
     print(f'Hi, {name}')  # 按 Ctrl+F8 切换断点。
 
+    project_data = {'username': '13723945525',
+                    'password': 'Th#VHv1P6T3s53Ug',
+                    'expected': '//*[@id="app"]/div[1]/div[1]/img'}
+    print(project_data['username'])
+
     # 获取当前日期
-    current_date = datetime.now()
-
-    # 打印当前日期
-    print("当前日期是:", current_date.strftime("%Y-%m-%d"))
-
-    # 如果需要获取当前日期的年、月、日
-    year = current_date.year
-    month = current_date.month
-    day = str(current_date.day)
-
-    print("年:", year)
-    print("月:", month)
-    print("日:", day)
+    # current_date = datetime.now()
+    #
+    # # 打印当前日期
+    # print("当前日期是:", current_date.strftime("%Y-%m-%d"))
+    #
+    # # 如果需要获取当前日期的年、月、日
+    # year = current_date.year
+    # month = current_date.month
+    # day = str(current_date.day)
+    #
+    # print("年:", year)
+    # print("月:", month)
+    # print("日:", day)
 
 
 # 按装订区域中的绿色按钮以运行脚本。

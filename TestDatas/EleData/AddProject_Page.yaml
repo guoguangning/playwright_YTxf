@@ -1,0 +1,41 @@
+# AddProject_Page.taml
+
+__path: '/myAssignment/myAssignment/myAssignment'
+
+__New_project_selector: '//div[@class="el-scrollbar theme-light"]/div/div/ul/div[1]'
+__Fire_inspection_selector: '//*[@id="app"]/div[1]/div[2]/div[2]/div[1]/div/ul/div[1]/li/ul/div[2]'
+
+__Project_Name_selector: '//input[@placeholder="请输入工程名称"]'
+
+# 工程地址
+__Project_Address_1: '市辖区高新区芝罘区福山区牟平区莱山区蓬莱区经济技术开发区龙口市莱阳市莱州市招远市栖霞市海阳市'
+__Project_Address_2: '招远市'
+
+# 类别
+__category_1: '//form[@class="el-form form el-form--inline"]/div[3]/div[2]'
+__category_2: ['//div[@class="el-select-dropdown el-popper is-multiple"]/div/div/ul/li/span[text()="新建"]',
+                    '//div[@class="el-select-dropdown el-popper is-multiple"]/div/div/ul/li/span[text()="建筑保温"]']
+# 使用性质
+__Use_nature_1: '工业民用'
+__Use_nature_2: '民用'
+#
+__Description_of_usage: '//input[@placeholder="请输入，非必填"]'
+
+__Building_Number_selector: '//textarea[@placeholder="请输入建筑层数"]'
+__Building_Area_selector: '//textarea[@placeholder="请输入建筑面积"]'
+__Total_Building_Area_selector: '//input[@placeholder="请输入建筑总面积"]'
+__Building_Height_selector: '//textarea[@placeholder="请输入建筑高度"]'
+__Building_volume_selector: '//input[@placeholder="请输入建筑体积"]'
+__Building_Construction_selector: '//input[@placeholder="请输入建筑结构"]'
+__Fire_level_selector: '//input[@placeholder="请输入耐火等级"]'
+__Hazard_Classification_selector: '//input[@placeholder="请输入"]'
+__Filing_date_selector: '//input[@placeholder="选择日期"]'
+# 建设单位
+__Construction_Unit_1: '//input[@placeholder="请输入，支持模糊查询"]'
+__Construction_Unit_2: '//div[@x-placement="bottom-start"]/div/div/ul/li/span[text()="滨州建设单位3210"]'
+# 技术负责人
+__Technical_leader_1: '//form[@class="el-form form el-form--inline"]/div[16]/div[2]'
+__Technical_leader_2: '//div[@x-placement="bottom-start"]/div/div/ul/li/span[text()="杨文明"]'
+
+__Temporarily_save_button_selector: '//div[@class="dialog-footer"]/button[1]'  # 暂存
+__Submit_button_selector: '//div[@class="dialog-footer"]/button[2]'  # 提交

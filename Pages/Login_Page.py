@@ -1,21 +1,25 @@
+"""
+-*- coding: utf-8 -*-
+@File    : Login_Page.py
+@Date    : 2024/9/24 15:25
+@Author  : ggn
+"""
 
-
-from playwright.sync_api import sync_playwright
+# from playwright.sync_api import sync_playwright
 from BasePage.BasePage import BasePage
 from BasePage.logger import Logger
+from Utils.Utils_yaml import load_yaml
 
 logger = Logger("Login_Page").get_log()
 
 
 class LoginPage(BasePage):
-    __path = '/login'
-    __username_selector = '//input[@placeholder="请输入账号"]'
-    __password_selector = '//input[@placeholder="请输入密码"]'
-    __login_button_selector = '//div[@class="loginBox"]/button'
+
+    data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\EleData\Login_Page.yaml')
 
     def goto_login(self):
         try:
-            self._goto_url(self.__path)
+            self._goto_url(self.data['__path'])
             logger.info("Navigating to login page")
         except Exception as e:
             logger.error(f"Failed to open login page: {e}")
@@ -23,7 +27,7 @@ class LoginPage(BasePage):
 
     def fill_username(self, value: str) -> None:
         try:
-            self._fill(self.__username_selector, value)
+            self._fill(self.data['__username_selector'], value)
             logger.info("Filling in username")
         except Exception as e:
             logger.error(f"Failed to fill username: {e}")
@@ -31,7 +35,7 @@ class LoginPage(BasePage):
 
     def fill_password(self, value: str) -> None:
         try:
-            self._fill(self.__password_selector, value)
+            self._fill(self.data['__password_selector'], value)
             logger.info("Filling in password")
         except Exception as e:
             logger.error(f"Failed to fill password: {e}")
@@ -39,7 +43,7 @@ class LoginPage(BasePage):
 
     def click_login_button(self) -> None:
         try:
-            self._click(self.__login_button_selector)
+            self._click(self.data['__login_button_selector'])
             logger.info("Clicking login button")
         except Exception as e:
             logger.error(f"Failed to click login button: {e}")
