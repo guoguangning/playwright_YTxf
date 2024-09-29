@@ -11,12 +11,12 @@ def run_pytest(allure_results_dir: Path):
     运行 pytest 并生成 allure 结果。
     :param allure_results_dir: 存储 pytest allure 结果的目录
     """
-    pattern = './Testcases/TestLogin.py'
+    # pattern = './Testcases/TestLogin.py'
     try:
         logger.info("Running pytest...")
         result = subprocess.run([
             'pytest',
-            pattern,
+            # pattern,
             f'--alluredir={allure_results_dir}'
         ], check=True, text=True, capture_output=True)
 
