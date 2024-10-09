@@ -53,6 +53,7 @@ class BasePage:
         :return:
         """
         try:
+            self._ele_to_be_visible_force(locator, frame_locator)
             target = self._get_target_locator(locator, frame_locator)
             target.hover()
         except Exception as e:
@@ -69,6 +70,7 @@ class BasePage:
         """
         try:
             target = self._get_target_locator(locator, frame_locator)
+            target.click()
             target.fill(value)
         except Exception as e:
             logger.error(f"输入失败: {e}")
@@ -92,29 +94,23 @@ class BasePage:
     def _fill_select(self, locator: str, *option_locators: str, input_value: Optional[str] = None,
                      frame_locator: Optional[str] = None) -> None:
         """
+        填充输入框或选择下拉选项，支持输入及多选。
+
         :param locator: 输入框或下拉框定位元素
         :param option_locators: 需要选择的下拉选项元素
         :param input_value: 当 locator 为输入框时填写的内容
         :param frame_locator: 提供的 frame 框架
-        下拉选择，支持输入及多选
         """
         try:
             target_element = self._get_target_locator(locator, frame_locator)
-            logger.info("输入框或下拉框定位元素成功")
+            logger.info("定位输入框或下拉框成功")
             target_element.click()
 
-            # 填充输入框
             if input_value:
-                logger.info("准备输入内容")
-                target_element.fill(input_value)  # 填充输入内容
-                logger.info("输入成功")
-
-            self._ele_to_be_visible_force(option_locators[0], frame_locator)
-
-            # 遍历选择的选项 locators
-            for option_locator in option_locators:
-                option_element = self._get_target_locator(option_locator, frame_locator)
-                option_element.click()
+                self._fill_input(target_element, input_value)
+                self._select_option(option_locators[0], frame_locator)
+            else:
+                self._select_multiple_options(option_locators, frame_locator)
 
         except ValueError as ve:
             logger.error(f"值错误: {ve}. 请检查传入的参数。")
@@ -122,6 +118,26 @@ class BasePage:
         except Exception as e:
             logger.error(f"下拉框选择失败: {str(e)}")
             raise
+
+    @staticmethod
+    def _fill_input(target_element, input_value: str) -> None:
+        """ 填充输入框的辅助方法 """
+        logger.info("准备输入内容")
+        target_element.fill('')
+        target_element.fill(input_value)
+        logger.info(f"输入内容 '{input_value}' 成功")
+
+    def _select_option(self, option_locator: str, frame_locator: Optional[str]) -> None:
+        """ 选择单个下拉选项的辅助方法 """
+        self._ele_to_be_visible_force(option_locator, frame_locator)
+        option_element = self._get_target_locator(option_locator, frame_locator)
+        option_element.click()
+
+    def _select_multiple_options(self, option_locators: tuple, frame_locator: Optional[str]) -> None:
+        """ 选择多个下拉选项的辅助方法 """
+        for option_locator in option_locators:
+            option_element = self._get_target_locator(option_locator, frame_locator)
+            option_element.click()
 
     def _select_date(self, date_placeholder: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -185,19 +201,26 @@ class BasePage:
         except Exception as e:
             logger.error(f"文件上传失败: {e}")
 
-    def _ele_to_be_visible(self, locator: str) -> bool:
-        """断言元素可见"""
+    def _ele_to_be_expect(self, locator: str, text: Optional[str] = None) -> bool:
+        """断言元素"""
         try:
-            # 日志记录尝试断言的元素定位器
-            logger.info(f"尝试断言定位的元素 '{locator}' 可见.")
+            # 等待元素可见
+            self._ele_to_be_visible_force(locator)
 
-            # 断言元素可见
-            expect(self.page.locator(locator)).to_be_visible()
-
-            # 日志记录断言结果
-            logger.info(f"定位的元素 '{locator}' 可见.")
-            return True  # 断言成功
-
+            if text is not None:
+                # 日志记录尝试断言的元素定位器
+                logger.info(f"尝试定位断言的元素 '{locator}' 值.")
+                # 使用 expect 断言元素值
+                expect(self._get_target_locator(locator)).to_contain_text(text)
+                logger.info(f"定位的元素 '{locator}' 值与断言值一致.")
+                return True
+            else:
+                # 日志记录尝试断言的元素定位器
+                logger.info(f"尝试定位断言的元素 '{locator}' 可见.")
+                # 使用 expect 断言元素可见
+                expect(self._get_target_locator(locator)).to_be_visible()
+                logger.info(f"定位的元素 '{locator}' 可见.")
+                return True
         except Exception as e:
             # 日志记录异常情况
             logger.error(f"使用定位器声明元素的可见性时发生错误 '{locator}': {e}")

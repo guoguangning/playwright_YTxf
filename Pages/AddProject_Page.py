@@ -12,7 +12,6 @@ logger = Logger("AddProject_Page").get_log()
 
 
 class AddProjectPage(BasePage):
-
     AddProjectPage_data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\EleData\AddProject_Page.yaml')
 
     def goto_add_project(self):
@@ -49,7 +48,8 @@ class AddProjectPage(BasePage):
 
     def select_project_address(self) -> None:
         try:
-            self._select_options(self.AddProjectPage_data['__Project_Address_1'], self.AddProjectPage_data['__Project_Address_2'])
+            self._select_options(self.AddProjectPage_data['__Project_Address_1'],
+                                 self.AddProjectPage_data['__Project_Address_2'])
             logger.info("Selector 工程地址")
         except Exception as e:
             logger.error(f"Failed to Selector 工程地址：{e}")
@@ -154,7 +154,8 @@ class AddProjectPage(BasePage):
 
     def select_construction_unit(self, value: str) -> None:
         try:
-            self._fill_select(self.AddProjectPage_data['__Construction_Unit_1'], self.AddProjectPage_data['__Construction_Unit_2'], input_value=value)
+            self._fill_select(self.AddProjectPage_data['__Construction_Unit_1'],
+                              self.AddProjectPage_data['__Construction_Unit_2'], input_value=value)
             logger.info("建设单位")
         except Exception as e:
             logger.error(f"Failed to Selector 建设单位：{e}")
@@ -162,7 +163,8 @@ class AddProjectPage(BasePage):
 
     def select_technical_leader(self) -> None:
         try:
-            self._fill_select(self.AddProjectPage_data['__Technical_leader_1'], self.AddProjectPage_data['__Technical_leader_2'])
+            self._fill_select(self.AddProjectPage_data['__Technical_leader_1'],
+                              self.AddProjectPage_data['__Technical_leader_2'])
             logger.info("Selector 技术负责人")
         except Exception as e:
             logger.error(f"Failed to Selector 技术负责人：{e}")
@@ -183,3 +185,21 @@ class AddProjectPage(BasePage):
         except Exception as e:
             logger.error(f"Failed to click 提交按钮: {e}")
             raise
+
+    def click_submit_two_button(self) -> None:
+        try:
+            self._click(self.AddProjectPage_data['__Submit_button_two_selector'])
+            logger.info("Clicking 提交二次确认按钮")
+        except Exception as e:
+            logger.error(f"Failed to click 提交二次确认按钮: {e}")
+            raise
+
+    def click_unit_not_registered_button(self):
+        try:
+            if self._ele_to_be_expect(self.AddProjectPage_data['__expected'], self.AddProjectPage_data['__expected_text']):
+                self._click(self.AddProjectPage_data['__Unit_not_registered'])
+                logger.info("Clicking 单位未注册提示：二次确认按钮")
+                return True
+        except Exception as e:
+            logger.error(f"Failed to click 单位未注册提示：二次确认按钮: {e}")
+            return False

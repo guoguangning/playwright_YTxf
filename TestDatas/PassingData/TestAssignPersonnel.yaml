@@ -1,0 +1,7 @@
+# TestAssignPersonnel.yaml
+-
+  Architecture: ''
+  Drainage_professional: ''
+  Electrical_Engineering: ''
+  HVAC_professional: ''
+  expected: 'body > div.el-dialog__wrapper > div > div.el-dialog__header > span'

@@ -31,7 +31,7 @@ __Fire_level_selector: '//input[@placeholder="请输入耐火等级"]'
 __Hazard_Classification_selector: '//input[@placeholder="请输入"]'
 __Filing_date_selector: '//input[@placeholder="选择日期"]'
 # 建设单位
-__Construction_Unit_1: '//input[@placeholder="请输入，支持模糊查询"]'
+__Construction_Unit_1: '//form[@class="el-form form el-form--inline"]/div[15]/div[2]/div/div/input'
 __Construction_Unit_2: '//div[@x-placement="bottom-start"]/div/div/ul/li/span[text()="滨州建设单位3210"]'
 # 技术负责人
 __Technical_leader_1: '//form[@class="el-form form el-form--inline"]/div[16]/div[2]'
@@ -39,3 +39,8 @@ __Technical_leader_2: '//div[@x-placement="bottom-start"]/div/div/ul/li/span[tex
 
 __Temporarily_save_button_selector: '//div[@class="dialog-footer"]/button[1]'  # 暂存
 __Submit_button_selector: '//div[@class="dialog-footer"]/button[2]'  # 提交
+__Submit_button_two_selector: '//div[@class="el-message-box__btns"]/button[2]' # 提交为二次确认
+
+__expected: '//div[@aria-label="提示"]/div/div[2]/div/div[2]/p[text()="建设单位滨州建设单位3210未注册，确认提交吗?"]'# 建设单位未注册弹窗提示断言
+__expected_text: '建设单位滨州建设单位3210未注册，确认提交吗?'
+__Unit_not_registered: '//div[@aria-label="提示"]/div/div[3]/button[2]' # 单位未注册提示弹窗确认按钮

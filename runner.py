@@ -1,6 +1,8 @@
 import subprocess
 from pathlib import Path
 import time
+
+
 from BasePage.logger import Logger
 
 logger = Logger("runner").get_log()
@@ -11,17 +13,12 @@ def run_pytest(allure_results_dir: Path):
     运行 pytest 并生成 allure 结果。
     :param allure_results_dir: 存储 pytest allure 结果的目录
     """
-    # pattern = './Testcases/TestLogin.py'
+    command = ['pytest', f'--alluredir={allure_results_dir}']
+    logger.info(f"Running pytest with command: {command}")
     try:
-        logger.info("Running pytest...")
-        result = subprocess.run([
-            'pytest',
-            # pattern,
-            f'--alluredir={allure_results_dir}'
-        ], check=True, text=True, capture_output=True)
+        result = subprocess.run(command, check=True, text=True, capture_output=True)
 
         logger.info(result.stdout)  # 记录 pytest 输出
-        # logger.error(result.stderr)  # 记录 pytest 错误输出
 
     except subprocess.CalledProcessError as e:
         logger.error(f"An error occurred while running pytest: {e}")
@@ -37,11 +34,11 @@ def generate_allure_report(allure_results_dir: Path, html_report_dir: Path):
     :param allure_results_dir: 存储 pytest allure 结果的目录
     :param html_report_dir: 生成的 HTML 报告目录
     """
-    allure_cmd = 'C:\\allure-2.30.0\\bin\\allure.bat'
+    allure_cmd = Path('C:\\allure-2.30.0\\bin\\allure.bat')
+    command = [str(allure_cmd), 'generate', allure_results_dir, '-o', html_report_dir, '--clean']
+    logger.info(f"Generating Allure report with command: {command}")
 
     try:
-        logger.info("Generating Allure report...")
-        command = [allure_cmd, 'generate', allure_results_dir, '-o', html_report_dir, '--clean']
         # 使用 subprocess.run 来执行 allure 生成命令
         result = subprocess.run(
             command,
@@ -52,8 +49,6 @@ def generate_allure_report(allure_results_dir: Path, html_report_dir: Path):
 
         # # 记录 Allure 输出
         logger.info(result.stdout)  # 记录 Allure 输出
-        # logger.error(result.stderr)  # 记录 Allure 错误输出
-
         logger.info(f"Allure report generated at: {html_report_dir}")
 
     except subprocess.CalledProcessError as e:
@@ -69,10 +64,11 @@ def open_allure_report(report_dir: Path):
     打开生成的 Allure 报告。
     :param report_dir: 生成的 HTML 报告目录
     """
-    allure_cmd = r'C:\allure-2.30.0\bin\allure.bat'
+    allure_cmd = Path('C:\\allure-2.30.0\\bin\\allure.bat')
+    command = [str(allure_cmd), 'open', report_dir]
+    logger.info(f"Opening Allure report with command: {command}")
     try:
-        logger.info("Opening Allure report...")
-        subprocess.run([allure_cmd, 'open', report_dir], check=True)
+        subprocess.run(command, check=True)
     except subprocess.CalledProcessError as e:
         logger.error(f"Error opening Allure report: {e}")
         logger.error(f"Return code: {e.returncode}")
