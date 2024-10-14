@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+# @File    : RectificationDecisionConfirmation_Page.yaml
+# @Date    : 2024/10/12 10:51
+# @Author  : ggn
+
+__path: '/myAssignment/myAssignment/myAssignment'
+__Enter_acceptance: '//div[text()="验收工程名称"]/ancestor::tr//td/div/button/span[text()="进入验收"]'
+__RectificationDecisionConfirmation: '//div[@class="container_plan_bottom"]/div[4]/div[1]/div/div[1]'
+
+__Submit_button: 'body > div.el-dialog__wrapper > div.el-dialog.el-dialog--center > div.el-dialog__body > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)'  # 提交按钮
+__Double_confirmation_button: 'body > div.el-message-box__wrapper > div > div.el-message-box__btns > button.el-button.el-button--default.el-button--small.el-button--primary'   # 二次确认按钮

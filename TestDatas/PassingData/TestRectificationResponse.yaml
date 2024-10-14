@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+# @File    : TestRectificationResponse.yaml
+# @Date    : 2024/10/11 15:18
+# @Author  : ggn
+
+-
+  value: '第1-1回复'
+  value2: '第1-2回复'
+  files: 'C:\case\playwright-ytxf\TestDatas\FileData\picture.jpg'
+  expected: '//*[@id="app"]/div[1]/div[3]/section/div/form/div[1]/div[1]/label'
+  value3: '第2-1回复'

@@ -2,12 +2,28 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Logs/202409291414.log" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Logs/202410141620.log" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/AcceptanceConfirmation_Page.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/TestDatas/EleData/AddProject_Page.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/TestDatas/EleData/AssignPersonnel_Page.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/TestDatas/EleData/Login_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/RecordFormSignature_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/RectificationDecisionConfirmation_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/RectificationResponseJudgment_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/RectificationResponse_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/Signature_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/EleData/SiteAcceptance_Page.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/Login.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestAcceptanceConfirmation.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestAddProject.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestAssignPersonnel.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestLogin.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestRecordFormSignature.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestRectificationDecisionConfirmation.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestRectificationResponse.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestRectificationResponseJudgment.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestSignature.yaml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/TestDatas/PassingData/TestSiteAcceptance.yaml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pytest.ini" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>

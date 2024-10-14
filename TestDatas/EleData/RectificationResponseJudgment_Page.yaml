@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+# @File    : RectificationResponseJudgment_Page.yaml
+# @Date    : 2024/10/12 10:05
+# @Author  : ggn
+
+__path: '/myAssignment/myAssignment/myAssignment'
+__Enter_acceptance: '//div[text()="验收工程名称"]/ancestor::tr//td/div/button/span[text()="进入验收"]'
+__RectificationResponseJudgment: '//div[@class="container_plan_bottom"]/div[4]/div[1]/div/div[1]'
+
+__Reply_judgment: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div/div[2]/div/div/label[3]' # 整改判定1-1
+__Disagree_reply: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div/div[3]/div/div/textarea'
+__Disagree_reply_images: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div/div[3]/div/button'
+__Disagree_reply_images_input: '//*[@id="pane-first"]/div[1]/div/div[1]/div/input'
+__Disagree_reply_images_save: '//*[@id="pane-first"]/div[3]/button[1]'
+__Reply_judgment2: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/label[2]' # 整改判定1-1 问题2
+
+__Submit_button: 'body > div.el-dialog__wrapper > div.el-dialog.el-dialog--center > div.el-dialog__body > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)'  # 提交按钮
+__Double_confirmation_button: 'body > div.el-message-box__wrapper > div > div.el-message-box__btns > button.el-button.el-button--default.el-button--small.el-button--primary'   # 二次确认按钮
+
+__Reply_judgment3: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div[2]/div[2]/div/div/label[2]'   # 整改判定1-2
+
+__Reply_judgment4: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div[5]/div[2]/div/div/label[2]' # 整改判定2-1
+__Reply_judgment5: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[3]/div/div[2]/div/div[2]/div/div/label[2]'

@@ -12,7 +12,7 @@ logger = Logger("AddProject_Page").get_log()
 
 
 class AddProjectPage(BasePage):
-    AddProjectPage_data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\EleData\AddProject_Page.yaml')
+    AddProjectPage_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\EleData\AddProject_Page.yaml')
 
     def goto_add_project(self):
         try:

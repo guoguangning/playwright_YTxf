@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+# @File    : TestAcceptanceConfirmation.yaml
+# @Date    : 2024/10/10 16:53
+# @Author  : ggn
+
+-
+  expected: '//*[@id="app"]/div[1]/div[3]/section/div/form/div[1]/div[1]/label'

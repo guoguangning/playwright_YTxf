@@ -15,7 +15,7 @@ logger = Logger("Login_Page").get_log()
 
 class LoginPage(BasePage):
 
-    data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\EleData\Login_Page.yaml')
+    data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\EleData\Login_Page.yaml')
 
     def goto_login(self):
         try:

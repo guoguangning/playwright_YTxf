@@ -13,7 +13,7 @@ logger = Logger("AssignPersonnel_Page").get_log()
 
 
 class AssignPersonnelPage(BasePage):
-    AssignPersonnelPage_data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\EleData\AssignPersonnel_Page.yaml')
+    AssignPersonnelPage_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\EleData\AssignPersonnel_Page.yaml')
 
     def goto_assign_personnel(self):
         try:

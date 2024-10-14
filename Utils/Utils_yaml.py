@@ -29,6 +29,9 @@ def load_yaml(file_path):
             dict_value = yaml.load(file.read(), Loader=yaml.FullLoader)
             logger.info(f"成功加载文件 {file_path}。")
             return dict_value
+    except FileNotFoundError:
+        logger.error(f"文件 {file_path} 未找到。")
+        return None
     except yaml.YAMLError as exc:
         logger.error(f"YAML解析错误: {exc}")
         return None

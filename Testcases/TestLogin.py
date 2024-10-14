@@ -14,9 +14,12 @@ logger = Logger("TestLogin").get_log()
 
 
 class TestLogin(object):
+    param_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\PassingData\TestLogin.yaml')
+    if param_data is None:
+        raise ValueError("无法加载 TestSiteAcceptance.yaml 文件或文件内容为空。")
 
-    @pytest.mark.order(1)
-    @pytest.mark.parametrize('login_data', load_yaml(r'C:\case\playwright-ytxf\TestDatas\PassingData\TestLogin.yaml'))
+    @pytest.mark.run(order=1)
+    @pytest.mark.parametrize('login_data', param_data)
     def test_login(self, page, login_data):
         """测试登录功能"""
 

@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+# @File    : RectificationResponse_Page.yaml
+# @Date    : 2024/10/11 14:24
+# @Author  : ggn
+
+__path: '/myAssignment/myAssignment/myAssignment'
+__Enter_acceptance: '//div[text()="验收工程名称"]/ancestor::tr//td/div/button/span[text()="进入验收"]'
+__Record_RectificationResponse: '//div[@class="node is-always-shadow"]'
+
+__Response: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div/div/div/div/textarea' # 意见1第1-1回复
+__Response_Images: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div/div/div/button'
+__Response_Images_input: '//*[@id="pane-first"]/div[1]/div/div[1]/div/input'
+__Response_Images_save: '//*[@id="pane-first"]/div[3]/button[1]'
+__Response2: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[2]/div/div[2]/div/div/div/div/textarea'
+
+__Submit_button: 'body > div.el-dialog__wrapper > div.el-dialog.el-dialog--center > div.el-dialog__body > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)'  # 提交按钮
+__Double_confirmation_button: 'body > div.el-message-box__wrapper > div > div.el-message-box__btns > button.el-button.el-button--default.el-button--small.el-button--primary'   # 二次确认按钮
+
+__Response3: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div[2]/div/div/div/textarea'  # 意见1第1-2回复
+
+__Response4: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div[5]/div/div/div/textarea'  # 意见1第2-1回复
+__Response5: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[3]/div/div[2]/div/div/div/div/textarea' # 意见3第1-1回复

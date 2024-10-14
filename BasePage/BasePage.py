@@ -151,11 +151,12 @@ class BasePage:
             # 获取当前日期
             current_date = datetime.now()
             date_to_select = str(current_date.day)
+            logger.info("{date_to_select}")
 
             # 寻找并选择当前日期
             date_element = self.page.get_by_text(date_to_select, exact=True)
             if date_element.count() > 0:  # 确保找到元素
-                date_element.nth(1).click()
+                date_element.click()
             else:
                 logger.warning(f"未找到日期 {date_to_select}，请确认日期选择框是否正确显示.")
 
@@ -191,15 +192,25 @@ class BasePage:
         """
         上传文件的方法
         :param locator: 定位器
-        :param files: 单个文件名，或者列表存放多个文件
+        :param files: 单个文件路径，或者列表存放多个文件路径
         :param frame_locator: iframe框架定位器，如果没有就不传
         :return:
         """
+        file_paths = []
         try:
+            if isinstance(files, str):
+                file_paths = [files]
+            elif isinstance(files, list):
+                file_paths = files
+            else:
+                raise TypeError("files 参数必须是字符串或字符串列表")
+
             target = self._get_target_locator(locator, frame_locator)
-            target.set_input_files(files)
+            target.set_input_files(file_paths)
+            logger.info(f"文件上传成功: {', '.join(file_paths)} 到定位器 {locator}")
         except Exception as e:
-            logger.error(f"文件上传失败: {e}")
+            logger.error(f"文件上传失败: {e} - 定位器: {locator}, 文件路径: {file_paths}")
+            raise  # 重新抛出异常，以便调用者可以处理
 
     def _ele_to_be_expect(self, locator: str, text: Optional[str] = None) -> bool:
         """断言元素"""
@@ -248,13 +259,29 @@ class BasePage:
         if forward:
             self.page.go_forward()
 
-    def screenshot(self, path: str, full_page: bool = True, locator: Optional[str] = None) -> str:
-        """截图功能，默认截取全屏，如果传入定位器表示截取元素"""
-        if locator:
-            self.page.locator(locator).screenshot(path=path)
-        else:
-            self.page.screenshot(path=path, full_page=full_page)
-        return path
+    def screenshot(self, path: str, full_page: bool = True, locator: Optional[str] = None) -> dict:
+        """
+        截图功能，默认截取全屏。如果传入定位器，则截取元素。
+
+        :param path: 截图保存的路径。
+        :param full_page: 是否截取全屏，默认为 True。
+        :param locator: 定位器，用于指定要截图的元素。
+        :return: 返回一个字典，包含截图结果的状态和路径。
+        """
+        try:
+            if locator:
+                # 检查定位器是否有效
+                if not self.page.locator(locator).is_visible():
+                    raise ValueError(f"Locator '{locator}' is not visible.")
+                self.page.locator(locator).screenshot(path=path)
+            else:
+                self.page.screenshot(path=path, full_page=full_page)
+
+            logger.info(f"Screenshot saved to {path}")
+            return {"status": "success", "path": path}
+        except Exception as e:
+            logger.error(f"Failed to take screenshot: {e}")
+            return {"status": "failure", "message": str(e)}
 
     def _get_target_locator(self, locator: str, frame_locator: Optional[str] = None) -> Locator:
         """获取目标定位器"""

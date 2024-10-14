@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+# @File    : TestAcceptanceConfirmation.yaml
+# @Date    : 2024/10/9 15:01
+# @Author  : ggn
+
+-
+  Question_1: '意见1'
+  Question_2: '意见2'
+  Question_1-2: '意见1-2'
+  Question_3: '意见3'
+  files: 'C:\case\playwright-ytxf\TestDatas\FileData\picture.jpg'
+  expected: '//*[@id="app"]/div[1]/div[3]/section/div/form/div[1]/div[1]/label'

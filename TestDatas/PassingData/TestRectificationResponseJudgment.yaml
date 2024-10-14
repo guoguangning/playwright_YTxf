@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# @File    : TestRectificationResponseJudgment.yaml
+# @Date    : 2024/10/12 10:40
+# @Author  : ggn
+
+-
+  value: '不同意回复'
+  files: 'C:\case\playwright-ytxf\TestDatas\FileData\picture.jpg'
+  expected: '//*[@id="app"]/div[1]/div[3]/section/div/form/div[1]/div[1]/label'

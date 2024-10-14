@@ -1,0 +1,58 @@
+# -*- coding: utf-8 -*-
+# @File    : SiteAcceptance_Page.yaml
+# @Date    : 2024/10/9 15:01
+# @Author  : ggn
+
+__path: '/myAssignment/myAssignment/myAssignment'
+__Enter_acceptance: '//div[text()="验收工程名称"]/ancestor::tr//td/div/button/span[text()="进入验收"]'
+__site_acceptance: '//div[@class="container_plan_bottom"]/div[4]/div[1]/div/div[1]'
+
+__Table_1: '//div[@id="tab-0"]'
+__Table_1_Conclusion: '//*[@id="pane-1"]/form/fieldset/div/div/div/div/label[1]'  # 表1结论合格
+__Table_1_Conclusions: '//*[@id="pane-0"]/form/fieldset/div/div[1]/div/div/label[2]'  # 表1结论不合格
+__Table_1_Opinions: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div/div/div[1]/div/div/textarea'  # 表1意见1
+__Table_1_Opinion_Images: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div/div/div/div/button[1]' # 表1意见1图
+__Table_1_Opinion_Images_input: '//*[@id="pane-first"]/div[1]/div/div[1]/div/input' # 表1意见1图片上传元素
+__Table_1_Opinion_Images_save: '//*[@id="pane-first"]/div[3]/button[1]' # 图片上传后保存按钮
+__Table_1_Add_acceptance_comments: '//*[@id="pane-0"]/form/fieldset/div/div[2]/button'  # 表1添加验收意见
+__Table_1_Opinions_2: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[2]/div/div/div/div/textarea' # 表1意见2
+
+__Table_1_Conclusion2: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div[3]/div/div/div/label[2]'  # 表1第二次现场查验意见1结论
+__Table_1_Opinions2: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[1]/div/div[2]/div[4]/div/div/div/textarea'  # 表1二次现场验收不合格意见
+__Table_1_Conclusion3: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div/label[1]'  # 表1第二次现场查验意见2结论
+__Table_1_Opinions3: '//*[@id="pane-0"]/form/fieldset/div/div[2]/div[3]/div/div/div/div/textarea'  #表1二轮新增意见3
+
+__Table_1_Conclusion4: '#pane-0 > form > fieldset > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(6) > div > div > div > label:nth-child(1)' # 表1第三次现场查验意见1结论
+__Table_1_Conclusion5: '#pane-0 > form > fieldset > div > div:nth-child(2) > div:nth-child(3) > div > div:nth-child(2) > div:nth-child(2) > div > div > div > label:nth-child(1)' # 表1第三次现场查验意见3结论
+
+__Table_2: '//div[@id="tab-1"]'
+__Table_2_Conclusion: '//*[@id="pane-1"]/form/fieldset/div/div/div/div/label[1]'
+__Table_3: '//div[@id="tab-2"]'
+__Table_3_Conclusion: '//*[@id="pane-2"]/form/fieldset/div/div/div/div/label[1]'
+__Table_4: '//div[@id="tab-3"]'
+__Table_4_Conclusion: '//*[@id="pane-3"]/form/fieldset/div/div/div/div/label[1]'
+__Table_5: '//div[@id="tab-4"]'
+__Table_5_Conclusion: '//*[@id="pane-4"]/form/fieldset/div/div/div/div/label[1]'
+__Table_6: '//div[@id="tab-5"]'
+__Table_6_Conclusion: '//*[@id="pane-5"]/form/fieldset/div/div/div/div/label[1]'
+__Table_7: '//div[@id="tab-6"]'
+__Table_7_Conclusion: '//*[@id="pane-6"]/form/fieldset/div/div/div/div/label[1]'
+__Table_8: '//div[@id="tab-7"]'
+__Table_8_Conclusion: '//*[@id="pane-7"]/form/fieldset/div/div/div/div/label[1]'
+__Table_9: '//div[@id="tab-8"]'
+__Table_9_Conclusion: '//*[@id="pane-8"]/form/fieldset/div/div/div/div/label[1]'
+__Table_10: '//div[@id="tab-9"]'
+__Table_10_Conclusion: '//*[@id="pane-9"]/form/fieldset/div/div/div/div/label[1]'
+__Table_11: '//div[@id="tab-10"]'
+__Table_11_Conclusion: '//*[@id="pane-10"]/form/fieldset/div/div/div/div/label[1]'
+__Table_12: '//div[@id="tab-11"]'
+__Table_12_Conclusion: '//*[@id="pane-11"]/form/fieldset/div/div/div/div/label[1]'
+__Table_13: '//div[@id="tab-12"]'
+__Table_13_Conclusion: '//*[@id="pane-12"]/form/fieldset/div/div/div/div/label[1]'
+__Table_14: '//div[@id="tab-13"]'
+__Table_14_Conclusion: '//*[@id="pane-13"]/form/fieldset/div/div/div/div/label[1]'
+__Table_15: '//div[@id="tab-14"]'
+__Table_15_Conclusion: '//*[@id="pane-14"]/form/fieldset/div/div/div/div/label[1]'
+
+__Submit_button: 'body > div.el-dialog__wrapper > div.el-dialog.el-dialog--center > div.el-dialog__body > div:nth-child(1) > div:nth-child(2) > button:nth-child(2)'  # 提交按钮
+__Double_confirmation_button: 'body > div.el-message-box__wrapper > div > div.el-message-box__btns > button.el-button.el-button--default.el-button--small.el-button--primary'   # 二次确认按钮

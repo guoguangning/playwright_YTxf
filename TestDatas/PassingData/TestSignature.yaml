@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# @File    : TestSignature.yaml
+# @Date    : 2024/10/12 16:40
+# @Author  : ggn
+
+-
+  expected: 'body > div.el-message.el-message--success > p(2)'
+  expected_test: '提交成功!'

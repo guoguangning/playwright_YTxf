@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# @File    : RecordFormSignature_Page.yaml
+# @Date    : 2024/10/11 9:18
+# @Author  : ggn
+
+__path: '/myAssignment/myAssignment/myAssignment'
+__Enter_acceptance: '//div[text()="验收工程名称"]/ancestor::tr//td/div/button/span[text()="进入验收"]'
+__Record_Form_Signature: '//div[@class="container_plan_bottom"]/div[5]/div[1]/div/div[1]'
+
+__Signature_button: 'body > div.el-dialog__wrapper.scene-dialog > div > div.el-dialog__body > div > div.footer > button:nth-child(1)'  # 签字按钮
+__Submit_button: 'body > div.el-dialog__wrapper.scene-dialog > div > div.el-dialog__body > div > div.footer > button:nth-child(1)'  # 提交按钮
+__Double_confirmation_button: 'body > div.el-message-box__wrapper > div > div.el-message-box__btns > button.el-button.el-button--default.el-button--small.el-button--primary' # 确认按钮
+
+__Signature_expected: 'body > div.el-message.el-message--success > p' #   /html/body/div[9]/p[text()="签字成功，请点击【提交】按钮。"]
+__Signature_expected_test: '签字成功，请点击【提交】按钮。'

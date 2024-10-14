@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+# @File    : Login.yaml
+# @Date    : 2024/10/11 10:53
+# @Author  : ggn
+
+-
+ username: '13723945525'
+ password: 'Th#VHv1P6T3s53Ug'
+ expected: '//*[@id="app"]/div[1]/div[1]/img'
+
+-
+ username: '13201233210'
+ password: 'Th#VHv1P6T3s53Ug'
+ expected: '//*[@id="app"]/div[1]/div[1]/img'
+
+-
+  username: '13964512521'
+  password: 'Th#VHv1P6T3s53Ug'
+  expected: '//*[@id="app"]/div[1]/div[1]/img'

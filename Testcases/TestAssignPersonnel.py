@@ -14,7 +14,14 @@ logger = Logger("TestAssignPersonnel").get_log()
 
 
 class TestAssignPersonnel:
-    login_data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\PassingData\TestLogin.yaml')[0]
+    yaml_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\PassingData\Login.yaml')
+    if yaml_data is None:
+        raise ValueError("无法加载 TestSiteAcceptance.yaml 文件或文件内容为空。")
+    login_data = yaml_data[0]
+
+    param_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\PassingData\TestAssignPersonnel.yaml')
+    if param_data is None:
+        raise ValueError("无法加载 TestSiteAcceptance.yaml 文件或文件内容为空。")
 
     @pytest.fixture(autouse=True)
     def set_up(self, page):
@@ -23,9 +30,8 @@ class TestAssignPersonnel:
         self.login.test_login(page, self.login_data)
         self.test_assign_personnel = AssignPersonnelPage(page)
 
-    @pytest.mark.order(3)
-    @pytest.mark.parametrize('project_data',
-                             load_yaml(r'C:\case\playwright-ytxf\TestDatas\PassingData\TestAssignPersonnel.yaml'))
+    @pytest.mark.run(order=3)
+    @pytest.mark.parametrize('project_data', param_data)
     def test_assign_personnel(self, project_data):
         """
         测试人员分配功能

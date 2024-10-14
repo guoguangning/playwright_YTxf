@@ -15,7 +15,14 @@ logger = Logger("TestAddProject").get_log()
 
 
 class TestAddProject(object):
-    login_data = load_yaml(r'C:\case\playwright-ytxf\TestDatas\PassingData\TestLogin.yaml')[0]
+    yaml_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\PassingData\Login.yaml')
+    if yaml_data is None:
+        raise ValueError("无法加载 TestSiteAcceptance.yaml 文件或文件内容为空。")
+    login_data = yaml_data[0]
+
+    param_data = load_yaml(r'C:\case\playwright-YTxf\TestDatas\PassingData\TestAddProject.yaml')
+    if param_data is None:
+        raise ValueError("无法加载 TestSiteAcceptance.yaml 文件或文件内容为空。")
 
     @pytest.fixture(autouse=True)
     def set_up(self, page):
@@ -24,9 +31,8 @@ class TestAddProject(object):
         self.login.test_login(page, self.login_data)
         self.test_add_project = AddProjectPage(page)  # 创建 AddProject 实例
 
-    @pytest.mark.order(2)
-    @pytest.mark.parametrize('project_data',
-                             load_yaml(r'C:\case\playwright-ytxf\TestDatas\PassingData\TestAddProject.yaml'))
+    @pytest.mark.run(order=2)
+    @pytest.mark.parametrize('project_data', param_data)
     def test_add_project_full(self, project_data):
         """
         测试新建消防查验项目
