@@ -10,6 +10,7 @@ import pytest
 from BasePage.logger import Logger
 from Pages.RecordFormSignature_Page import RecordFormSignaturePage
 from Testcases.TestLogin import TestLogin
+from Utils.Util_mysql import MySQLConnection
 from Utils.Utils_yaml import load_yaml
 
 logger = Logger("TestRecordFormSignature").get_log()
@@ -39,6 +40,19 @@ class TestAcceptanceConfirmation(object):
         测试评定记录表签字
         """
         try:
+            # 创建连接对象
+            connection_obj = MySQLConnection()
+            # 执行语句
+            update_query = """
+                    UPDATE yt_project_check_acceptance
+                    SET construction_org_code = '1244'
+                    WHERE
+                	construction_org_name = '滨州建设单位3210' 
+                    """
+            try:
+                connection_obj.execute_query(update_query)
+            except Exception as e:
+                logger.error(f"执行更新操作失败: {e}")
             self._navigate_to_record_form_signature()
             self._record_form_signature()
             time.sleep(2)

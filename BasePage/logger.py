@@ -29,7 +29,7 @@ class Logger(object):
             os.makedirs(log_dir)
 
         # 文件handler
-        fh = logging.FileHandler(log_name)
+        fh = logging.FileHandler(log_name, encoding='utf-8')
         fh.setLevel(logging.INFO)
 
         # 控制台handler
